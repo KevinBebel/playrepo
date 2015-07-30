@@ -1,0 +1,24 @@
+@(productForm : Form[Product])
+@import helper._
+
+@main("Product Form"){
+    <h1>Product Form</h1>
+
+    @helper.form(action = routes.Products.save()){
+        <fieldset>
+            <div class="form-group">
+                @helper.inputText(productForm("ean") , '_label -> "EAN" , 'class -> "form-control")
+            </div>
+            <div class="form-group">
+                @helper.inputText(productForm("name") , '_label -> "Name" , 'class -> "form-control")
+            </div>
+            <div class="form-group">
+                @helper.textarea(productForm("description") , '_label -> "Description" , 'class -> "form-control")
+            </div>
+        </fieldset>
+
+        <input type="submit" class="btn btn-success" value="save" >
+        <a class="btn btn-warning" href="@routes.Products.list()">cancel</a>
+    }
+
+}
